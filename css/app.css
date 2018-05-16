@@ -1,0 +1,242 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url(../img/geometry2.png); /* Background pattern from Subtle Patterns */
+    font-family: "Montserrat", sans-serif;
+    color: #3b525b;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    width: 80%;
+    max-width: 660px;
+    background-color: #c6d8d3;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 4px 6px 10px 0 rgba(46, 61, 73, 0.5);
+    margin: 0 0 5%;
+}
+
+.deck .card {
+    position: relative;
+    min-width: 48px;
+    background: #48646f;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 3px 15px rgba(46, 61, 73, 0.7);
+}
+
+.deck .card:active {
+    box-shadow: 2px 2px 8px rgba(46, 61, 73, 0.8);
+}
+
+/* Workaround to maintain card's aspect ratio */
+.deck .card:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.deck .card > * {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    visibility: hidden;
+}
+
+.deck .card.open {
+    background-color: #8582a0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.deck .card.wrong {
+    background-color: #f0544f;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #8ed081;
+    visibility: visible;
+    pointer-events: none;
+}
+
+.deck .card.open > *,
+.deck .card.match > * {
+    visibility: visible;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto;
+    width: 70%;
+    max-width: 600px;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0;
+    color: #8ed081;
+}
+
+.stars.bad-score {
+    color: #f0544f;
+}
+
+.stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.restart {
+    margin-left: auto;
+    cursor: pointer;
+    font-size: 40px;
+    color: #f0544f;
+}
+
+.counters > span:last-child {
+    padding-left: 10px;
+}
+
+/*
+ * Styles for Animate.css
+ */
+
+.zoomIn {
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+}
+
+.flipInY {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+.shake {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.8, 0.3);
+}
+
+@keyframes shake {
+    12%,
+    62% {
+        transform: translate3d(-15px, 0, 0);
+    }
+
+    37%,
+    87% {
+        transform: translate3d(15px, 0, 0);
+    }
+}
+
+.tada {
+    animation-duration: 0.4s;
+}
+
+@keyframes tada {
+    10%,
+    20% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    40%,
+    80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    60% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+}
+
+/*
+ * Styles for Sweetalert modals
+*/
+
+.swal-overlay {
+    background-color: rgba(72, 100, 111, 0.95);
+}
+
+.swal-modal {
+    background-color: #fff;
+}
+
+.swal-text {
+    text-align: center;
+}
+
+.swal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.swal-button {
+    background-color: #8ed081;
+    text-transform: uppercase;
+}
+
+.swal-button:active {
+    background-color: #75ab6a;
+}
+
+.swal-button--cancel {
+    color: white;
+    background-color: #f0544f;
+    text-transform: uppercase;
+}
+
+.swal-button--cancel:active {
+    background-color: #c54541;
+}
+
