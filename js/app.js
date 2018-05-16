@@ -195,6 +195,7 @@ function addToStack(node) {
     }
     if (correctMoves === cards.length / 2) {
         setTimeout(() => {
+            clearTimeout(timerId);
             victoryModal();
         }, 300);
     }
