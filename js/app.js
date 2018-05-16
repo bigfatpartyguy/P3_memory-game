@@ -97,16 +97,34 @@ function freshStart() {
     deck.appendChild(fragment);
     cards = document.querySelectorAll('.card');
 
-// Add recursive animtaion to cards
+// Add recursive animtaion to cards and open them for preview
     (function bounce(i) {
         setTimeout(() => {
-            cards[i].classList.add('animated', 'zoomIn');
-            cards[i].addEventListener('animationend', removeAnim);
+            cards[i].classList.add('animated', 'zoomIn', 'open');
+            cards[i].addEventListener(animationEnd, removeAnim);
             if (++i < cards.length) {
                 bounce(i);
             }
         }, 20);
     })(0);
+
+// Preview cards for 3s and then close them
+    setTimeout(() => {
+        (function endPreview(i) {
+            setTimeout(() => {
+                cards[i].classList.add('animated', 'flipInY');
+                cards[i].classList.remove('open');
+                cards[i].addEventListener(animationEnd, removeAnim);
+                if (++i < cards.length) {
+                    endPreview(i);
+                }
+            }, 20);
+        })(0);
+    }, 3000);
+
+    setTimeout(() => {
+        deck.addEventListener('click', openCard);
+    }, 3700);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -262,5 +280,4 @@ function victoryModal() {
 // MAIN EVENT LISTENERS
 
 document.addEventListener('DOMContentLoaded', freshStart);
-deck.addEventListener('click', openCard);
 restartBtn.addEventListener('click', restartModal);
