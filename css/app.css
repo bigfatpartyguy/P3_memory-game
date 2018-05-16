@@ -1,10 +1,12 @@
 html {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
+    -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
 
@@ -23,8 +25,15 @@ body {
 }
 
 .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
@@ -49,6 +58,7 @@ h1 {
     background-color: #c6d8d3;
     padding: 15px;
     border-radius: 6px;
+    -webkit-box-shadow: 4px 6px 10px 0 rgba(46, 61, 73, 0.5);
     box-shadow: 4px 6px 10px 0 rgba(46, 61, 73, 0.5);
     margin: 0 0 5%;
 }
@@ -61,10 +71,12 @@ h1 {
     border-radius: 6px;
     cursor: pointer;
     display: block;
+    -webkit-box-shadow: 5px 3px 15px rgba(46, 61, 73, 0.7);
     box-shadow: 5px 3px 15px rgba(46, 61, 73, 0.7);
 }
 
 .deck .card:active {
+    -webkit-box-shadow: 2px 2px 8px rgba(46, 61, 73, 0.8);
     box-shadow: 2px 2px 8px rgba(46, 61, 73, 0.8);
 }
 
@@ -81,6 +93,7 @@ h1 {
     height: 40%;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     visibility: hidden;
 }
@@ -117,6 +130,8 @@ h1 {
     grid-template-rows: auto;
     width: 70%;
     max-width: 600px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     margin-bottom: 20px;
     font-size: 1.4em;
@@ -155,48 +170,93 @@ h1 {
  */
 
 .zoomIn {
+    -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
+    -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
 }
 
 .flipInY {
+    -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
 }
 
 .shake {
+    -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
+    -webkit-animation-timing-function: cubic-bezier(0.2, 0.7, 0.8, 0.3);
     animation-timing-function: cubic-bezier(0.2, 0.7, 0.8, 0.3);
 }
 
-@keyframes shake {
+@-webkit-keyframes shake {
     12%,
     62% {
+        -webkit-transform: translate3d(-15px, 0, 0);
         transform: translate3d(-15px, 0, 0);
     }
 
     37%,
     87% {
+        -webkit-transform: translate3d(15px, 0, 0);
+        transform: translate3d(15px, 0, 0);
+    }
+}
+
+@keyframes shake {
+    12%,
+    62% {
+        -webkit-transform: translate3d(-15px, 0, 0);
+        transform: translate3d(-15px, 0, 0);
+    }
+
+    37%,
+    87% {
+        -webkit-transform: translate3d(15px, 0, 0);
         transform: translate3d(15px, 0, 0);
     }
 }
 
 .tada {
+    -webkit-animation-duration: 0.4s;
     animation-duration: 0.4s;
 }
 
-@keyframes tada {
+@-webkit-keyframes tada {
     10%,
     20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
         transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
     }
 
     40%,
     80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
         transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     }
 
     60% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+}
+
+@keyframes tada {
+    10%,
+    20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    40%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    60% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
         transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     }
 }
@@ -218,7 +278,11 @@ h1 {
 }
 
 .swal-footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
