@@ -63,7 +63,7 @@ const changeScore = (() => {
 })();
 
 // Remove animation classes from card
-function removeAnim(evt) {
+let removeAnim = (evt) => {
     let target;
     if (evt.target) {
         target = evt.target;
@@ -75,7 +75,7 @@ function removeAnim(evt) {
 }
 
 // Start new game, shuffle cards, reset timer, etc.
-function freshStart() {
+let freshStart = () => {
     moves.textContent = 0;
     cardStack = [];
     correctMoves = 0;
@@ -88,7 +88,7 @@ function freshStart() {
     changeScore.reset();
     shuffle(cardsArr);
     deck.innerHTML = '';
-    cardsArr.forEach(function(card) {
+    cardsArr.forEach((card) => {
         card.className = 'card';
         fragment.appendChild(card);
     });
@@ -126,7 +126,7 @@ function freshStart() {
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
+let shuffle = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -147,7 +147,7 @@ function shuffle(array) {
     Add functions to stack of 2 to compare them
 */
 
-function openCard(event) {
+let openCard = (event) => {
     if (!busyFlag && cardStack.length < 2) {
         busyFlag = true;
         let target = event.target;
@@ -180,7 +180,7 @@ function openCard(event) {
     appropriate function whether they've matched or not
 */
 
-function addToStack(node) {
+let addToStack = (node) => {
     cardStack.push(node);
     if (cardStack.length === 2) {
         let a = cardStack[0].innerHTML;
@@ -201,10 +201,10 @@ function addToStack(node) {
 
 // Lock the cards in the open position
 
-function lockMatched() {
+let lockMatched = () => {
     incrementMoves();
     correctMoves++;
-    cardStack.forEach(function(card) {
+    cardStack.forEach((card) => {
         card.classList.add('animated', 'match', 'tada');
     });
     setTimeout(() => {
@@ -214,9 +214,9 @@ function lockMatched() {
 
 // Close unmatched cards
 
-function closeUnmatched() {
+let closeUnmatched = () => {
     incrementMoves();
-    cardStack.forEach(function(card) {
+    cardStack.forEach((card) => {
         card.classList.add('animated', 'shake', 'open', 'wrong');
         setTimeout(() => {
             card.className = 'card animated flipInY';
@@ -228,7 +228,7 @@ function closeUnmatched() {
     }, 800);
 }
 
-function incrementMoves() {
+let incrementMoves = () => {
     const ratingArr = [16, 20, 23, 25, 27];
     moves.textContent++;
     if (ratingArr.includes(+moves.textContent)) {
@@ -241,7 +241,7 @@ function incrementMoves() {
 
 // MODAL
 
-function restartModal() {
+let restartModal = () => {
     swal({
         icon: 'warning',
         title: 'Are you sure you want to restart?',
@@ -263,7 +263,7 @@ function restartModal() {
     });
 }
 
-function victoryModal() {
+let victoryModal = () => {
     const timerNum = timer.textContent,
         movesNum = moves.textContent,
         swalScore = score.cloneNode(true);
