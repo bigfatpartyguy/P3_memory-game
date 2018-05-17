@@ -36,22 +36,20 @@ animClass = ['animated', 'flipInY', 'zoomIn', 'tada', 'shake', 'zoomIn'];
 
 const changeScore = (() => {
     function changeScore() {
-        let stars = document.querySelectorAll('.fa-star');
+        let stars = score.querySelectorAll('li');
         for (let i = stars.length - 1; i >= 0; i--) {
-            if (stars[i].getAttribute('data-prefix') === 'fas') {
-                stars[i].classList.toggle('fas');
-                stars[i].classList.toggle('far');
+            if (!stars[i].classList.contains('hidden')) {
+                stars[i].classList.add('hidden');
                 break;
             }
         }
     }
 
     changeScore.reset = () => {
-        let stars = document.querySelectorAll('.fa-star');
+        let stars = score.querySelectorAll('li');
         for(let i = 0; i <stars.length; i++) {
-            if (stars[i].getAttribute('data-prefix') === 'far') {
-                stars[i].classList.toggle('far');
-                stars[i].classList.toggle('fas');
+            if (stars[i].classList.contains('hidden')) {
+                stars[i].classList.remove('hidden');
             }
         }
         score.classList.remove('bad-score');

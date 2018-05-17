@@ -154,6 +154,10 @@ h1 {
     display: inline-block;
 }
 
+.stars li.hidden {
+    visibility: hidden;
+}
+
 .restart {
     margin-left: auto;
     cursor: pointer;
